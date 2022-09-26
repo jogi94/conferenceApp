@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Conference Room Booking</title>
+	<script type="text/javascript" src="{% static '/admin/js/core.js/' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgeta.css' %}">
+</head>
+<body>
+	<form style="text-align: center;margin-top: 10%" action="{% url 'bookingApp:bookingSubmit' %}" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<input type="hidden" name="redirectTo" value="{{request.path}}">
+		Select Meeting Room : {{form.room}}
+		Check in : {{form.check_in}}
+		check out : {{form.check_out}}
+		<button type="submit">Submit</button>
+
+	</form>
+
+</body>
+</html>
